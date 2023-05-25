@@ -18,14 +18,12 @@ app.use((req, res, next) => {
     'Access-Control-Allow-Origin',
     'https://mern-blog-frontend-eosin.vercel.app'
   );
-  res.setHeader(
-    'Access-Control-Allow-Methods',
-    'GET, POST, PUT, PATCH, DELETE'
-  );
+  res.setHeader('Access-Control-Allow-Methods', '*');
   res.setHeader(
     'Access-Control-Allow-Headers',
     'Content-Type, Authorization, multipart/form-data'
   );
+  res.setHeader('Content-Type', 'application/json');
   next();
 });
 app.use(express.json());
