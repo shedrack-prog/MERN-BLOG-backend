@@ -20,7 +20,7 @@ app.use((req, res, next) => {
   );
   res.setHeader('Access-Control-Allow-Methods', '*');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-  res.setHeader('Content-Type', 'application/json multipart/form-data');
+  res.setHeader('Content-Type', 'application/json, multipart/form-data');
   next();
 });
 app.use(express.json());
