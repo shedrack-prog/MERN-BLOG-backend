@@ -6,7 +6,7 @@ const connectDB = require('./db/connectDB.js');
 const authRoutes = require('./routes/authRoutes.js');
 const postRoutes = require('./routes/postRoutes.js');
 // imports>>>>>>>>>>>>>>>>>>>
-const cors = require('cors');
+// const cors = require('cors');
 const fileUpload = require('express-fileupload');
 const cookieParser = require('cookie-parser');
 const dotenv = require('dotenv');
@@ -33,22 +33,35 @@ dotenv.config();
 //   next();
 // });
 
-const corsOptions = {
-  origin: 'https://mern-blog-frontend-eosin.vercel.app',
-  optionsSuccessStatus: 200,
-  allowedHeaders: [
-    'Origin, X-Requested-With, Content-Type, Accept, x-client-key, x-client-token, x-client-secret, Authorization',
-  ],
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-};
+// const corsOptions = {
+//   origin: 'https://mern-blog-frontend-eosin.vercel.app',
+//   optionsSuccessStatus: 200,
+//   allowedHeaders: [
+//     'Origin, X-Requested-With, Content-Type, Accept, x-client-key, x-client-token, x-client-secret, Authorization',
+//   ],
+//   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+// };
+// app.use(cors(corsOptions));
+
+app.use(function (req, res, next) {
+  res.header(
+    'Access-Control-Allow-Origin',
+    'https://mern-blog-frontend-eosin.vercel.app'
+  );
+  res.header(
+    'Access-Control-Allow-Headers',
+    'Origin, X-Requested-With, Content-Type, Accept, Cache-Control, Key, Access-Control-Allow-Origin'
+  );
+  next();
+});
+
 app.use(express.json());
-app.use(cors(corsOptions));
-app.use(cookieParser());
 app.use(
   fileUpload({
     useTempFiles: true,
   })
 );
+app.use(cookieParser());
 app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/posts', postRoutes);
 
