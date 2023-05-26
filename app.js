@@ -5,7 +5,7 @@ const app = express();
 const connectDB = require('./db/connectDB.js');
 const authRoutes = require('./routes/authRoutes.js');
 const postRoutes = require('./routes/postRoutes.js');
-// imports>>>>>>>>>>>>>>>>>>>
+// imports packages >>>>>>>>>>>>>>>>>>>
 const cors = require('cors');
 const fileUpload = require('express-fileupload');
 const cookieParser = require('cookie-parser');
@@ -54,12 +54,9 @@ const corsOptions = {
 //   next();
 // });
 
-// handle application/json forms
-app.use(bodyParser.json());
-
-// handle application/x-www-form-urlencoded forms
-app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors(corsOptions));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(
   fileUpload({
