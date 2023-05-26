@@ -6,7 +6,7 @@ const connectDB = require('./db/connectDB.js');
 const authRoutes = require('./routes/authRoutes.js');
 const postRoutes = require('./routes/postRoutes.js');
 // imports>>>>>>>>>>>>>>>>>>>
-// const cors = require('cors');
+const cors = require('cors');
 const fileUpload = require('express-fileupload');
 const cookieParser = require('cookie-parser');
 const dotenv = require('dotenv');
@@ -33,28 +33,33 @@ dotenv.config();
 //   next();
 // });
 
-// const corsOptions = {
-//   origin: 'https://mern-blog-frontend-eosin.vercel.app',
-//   optionsSuccessStatus: 200,
-//   allowedHeaders: [
-//     'Origin, X-Requested-With, Content-Type, Accept, x-client-key, x-client-token, x-client-secret, Authorization',
-//   ],
-//   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-// };
-// app.use(cors(corsOptions));
+const corsOptions = {
+  origin: 'https://mern-blog-frontend-eosin.vercel.app',
+  optionsSuccessStatus: 200,
+  allowedHeaders: [
+    'Origin, X-Requested-With, Content-Type, Accept, x-client-key, x-client-token, x-client-secret, Access-Control-Allow-Origin, Authorization',
+  ],
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+};
 
-app.use(function (req, res, next) {
-  res.header(
-    'Access-Control-Allow-Origin',
-    'https://mern-blog-frontend-eosin.vercel.app'
-  );
-  res.header(
-    'Access-Control-Allow-Headers',
-    'Origin, X-Requested-With, Content-Type, Accept, Cache-Control, Key, Access-Control-Allow-Origin'
-  );
-  next();
-});
+// app.use(function (req, res, next) {
+//   res.header(
+//     'Access-Control-Allow-Origin',
+//     'https://mern-blog-frontend-eosin.vercel.app'
+//   );
+//   res.header(
+//     'Access-Control-Allow-Headers',
+//     'Origin, X-Requested-With, Content-Type, Accept, Cache-Control, Key, Access-Control-Allow-Origin'
+//   );
+//   next();
+// });
 
+// handle application/json forms
+app.use(bodyParser.json());
+
+// handle application/x-www-form-urlencoded forms
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(
   fileUpload({
