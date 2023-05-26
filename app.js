@@ -13,25 +13,34 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 // middlewares>>>>>>>>>>>>>>>>>>>>
-// app.use((req, res, next) => {
-//   res.setHeader(
-//     'Access-Control-Allow-Origin',
-//     'https://mern-blog-frontend-eosin.vercel.app'
-//   );
-//   res.setHeader('Access-Control-Allow-Methods', '*');
-//   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-//   res.setHeader('Content-Type', 'application/json, multipart/form-data');
-//   next();
-// });
+app.use((req, res, next) => {
+  res.setHeader(
+    'Access-Control-Allow-Origin',
+    'https://mern-blog-frontend-eosin.vercel.app'
+  );
+  res.setHeader(
+    'Access-Control-Allow-Methods',
+    'GET,HEAD,PUT,PATCH,POST,DELETE'
+  );
+  res.setHeader(
+    'Access-Control-Allow-Headers',
+    'Content-Type, Authorization, application/json, text/plain'
+  );
+  res.setHeader(
+    'Content-Type',
+    'application/json, multipart/form-data application/x-www-form-urlencoded, multipart/form-data,text/plain'
+  );
+  next();
+});
 
-var corsOptions = {
-  origin: 'https://mern-blog-frontend-eosin.vercel.app',
-  optionsSuccessStatus: 200,
-  allowedHeaders: ['Content-Type,Authorization,multipart/form-data'],
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-};
+// var corsOptions = {
+//   origin: 'https://mern-blog-frontend-eosin.vercel.app',
+//   optionsSuccessStatus: 200,
+//   allowedHeaders: ['Content-Type,Authorization,multipart/form-data'],
+//   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+// };
 app.use(express.json());
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 app.use(cookieParser());
 app.use(
   fileUpload({
