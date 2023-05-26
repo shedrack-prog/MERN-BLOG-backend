@@ -37,7 +37,7 @@ const corsOptions = {
   origin: 'https://mern-blog-frontend-eosin.vercel.app',
   optionsSuccessStatus: 200,
   allowedHeaders: [
-    'Content-Type,Authorization,application/x-www-form-urlencoded,multipart/form-data,text/plain',
+    'Origin, X-Requested-With, Content-Type, Accept, x-client-key, x-client-token, x-client-secret, Authorization',
   ],
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
 };
