@@ -35,7 +35,7 @@ dotenv.config();
 // });
 
 const corsOptions = {
-  origin: 'https://mern-blog-frontend-eosin.vercel.app/',
+  origin: 'https://mern-blog-frontend-eosin.vercel.app',
   optionsSuccessStatus: 200,
   allowedHeaders: [
     'Origin, X-Requested-With, Content-Type, Accept, x-client-key, x-client-token, x-client-secret, Access-Control-Allow-Origin, Authorization',
