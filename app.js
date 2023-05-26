@@ -27,7 +27,7 @@ dotenv.config();
 var corsOptions = {
   origin: 'https://mern-blog-frontend-eosin.vercel.app',
   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
-  allowedHeaders: ['Content-Type,Authorization '],
+  allowedHeaders: ['Content-Type,Authorization multipart/form-data'],
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
 };
 app.use(express.json());
