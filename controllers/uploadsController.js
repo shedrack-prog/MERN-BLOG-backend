@@ -51,7 +51,7 @@ const uploadToCloudinary = async (file, path) => {
       (err, res) => {
         if (err) {
           removeTmp(file.tempFilePath);
-          return res.json({ message: 'Upload image failed' });
+          return res.json({ message: err });
         }
         resolve({
           url: res.secure_url,

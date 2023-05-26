@@ -13,6 +13,6 @@ const authMiddleWare = require('../middlewares/authMiddleware.js');
 router.route('/login').post(login);
 router.route('/register').post(register);
 router.route('/logout').post(logoutUser);
-router.route('/getProfile').post(authMiddleWare, getProfile);
+router.route('/getProfile').get(authMiddleWare, getProfile);
 
 module.exports = router;
